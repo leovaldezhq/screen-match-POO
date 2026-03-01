@@ -28,6 +28,7 @@ public class MainQueries {
             System.out.println("Error loading config.properties");
         }
 
+        try {
         String apiKey =  properties.getProperty("omdb.apikey");
         String address = "http://www.omdbapi.com/?t=" + search.replace(" ", "+") + "&apikey=" + apiKey;
 
@@ -48,9 +49,14 @@ public class MainQueries {
         TitleOmdb omdbTitle = gson.fromJson(json, TitleOmdb.class);
         System.out.println(omdbTitle);
 
-        Title title = new Title(omdbTitle);
-        System.out.println("My title");
-        System.out.println(title);
+            Title title = new Title (omdbTitle);
+            System.out.println("Converted title");
+            System.out.println(title);
+        } catch (NumberFormatException e) {
+            System.out.println("The following error has occurred: ");
+            System.out.println(e.getMessage());
+        }
+
     }
 
 }
