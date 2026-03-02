@@ -1,4 +1,4 @@
-package br.com.alura.screenmatch;
+package br.com.alura.screenmatch.exceptions;
 
 public class YearConversionErrorException extends RuntimeException {
     private String message;
